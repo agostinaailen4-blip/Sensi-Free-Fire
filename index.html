@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SENSI FF - Generador de Sensibilidad</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(
+        135deg,
+        #090014,
+        #18002f,
+        #05000a
+      );
+
+      color: white;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    header h1 {
+      font-size: 34px;
+      color: #b86cff;
+      text-shadow: 0 0 15px #8a2be2;
+    }
+
+    header p {
+      color: #ccc;
+      margin-top: 8px;
+    }
+
+    .card {
+      background: rgba(20, 10, 35, 0.95);
+      border: 1px solid #6825a5;
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow:
+        0 0 25px rgba(138, 43, 226, 0.18);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #ddd;
+    }
+
+    select {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 18px;
+
+      border-radius: 10px;
+      border: 1px solid #7030ad;
+
+      background: #10091a;
+      color: white;
+
+      font-size: 16px;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+
+      border: none;
+      border-radius: 12px;
+
+      background: linear-gradient(
+        90deg,
+        #7b2cff,
+        #bd45ff
+      );
+
+      color: white;
+
+      font-size: 18px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      transition: 0.2s;
+
+      box-shadow:
+        0 0 15px rgba(157, 58, 255, 0.4);
+    }
+
+    button:hover {
+      transform: scale(1.02);
+    }
+
+    .result {
+      display: none;
+    }
+
+    .phone-title {
+      text-align: center;
+
+      color: #d38cff;
+
+      font-size: 24px;
+
+      margin-bottom: 20px;
+    }
+
+    .sensi-grid {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 12px;
+    }
+
+    .sensi {
+      background: #10091a;
+
+      border: 1px solid #542080;
+
+      border-radius: 12px;
+
+      padding: 15px;
+
+      text-align: center;
+    }
+
+    .sensi span {
+      display: block;
+
+      color: #aaa;
+
+      font-size: 14px;
+
+      margin-bottom: 7px;
+    }
+
+    .sensi strong {
+      font-size: 26px;
+
+      color: #d46cff;
+    }
+
+    .copy {
+      margin-top: 18px;
+
+      background: #261238;
+    }
+
+    .info {
+      margin-top: 15px;
+
+      text-align: center;
+
+      color: #aaa;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+
+      color: #777;
+
+      font-size: 13px;
+
+      margin-top: 20px;
+    }
+
+    @media (max-width: 450px) {
+
+      header h1 {
+        font-size: 28px;
+      }
+
+      .sensi-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <div class="container">
+
+    <header>
+
+      <h1>
+        🔥 SENSI FF
+      </h1>
+
+      <p>
+        Generador de sensibilidad para Free Fire
+      </p>
+
+    </header>
+
+
+    <div class="card">
+
+      <label for="marca">
+        📱 Marca del celular
+      </label>
+
+      <select
+        id="marca"
+        onchange="cargarModelos()"
+      >
+
+        <option value="">
+          Selecciona una marca
+        </option>
+
+        <option value="samsung">
+          Samsung
+        </option>
+
+        <option value="xiaomi">
+          Xiaomi / Redmi
+        </option>
+
+        <option value="motorola">
+          Motorola
+        </option>
+
+        <option value="iphone">
+          iPhone
+        </option>
+
+        <option value="realme">
+          Realme
+        </option>
+
+        <option value="oppo">
+          OPPO
+        </option>
+
+        <option value="infinix">
+          Infinix
+        </option>
+
+      </select>
+
+
+      <label for="modelo">
+        📲 Modelo del celular
+      </label>
+
+      <select id="modelo">
+
+        <option value="">
+          Primero selecciona una marca
+        </option>
+
+      </select>
+
+
+      <label for="dedos">
+        🎮 ¿Con cuántos dedos juegas?
+      </label>
+
+      <select id="dedos">
+
+        <option value="2">
+          2 dedos
+        </option>
+
+        <option value="3">
+          3 dedos
+        </option>
+
+        <option value="4">
+          4 dedos
+        </option>
+
+      </select>
+
+
+      <label for="estilo">
+        🎯 Estilo de juego
+      </label>
+
+      <select id="estilo">
+
+        <option value="equilibrado">
+          Equilibrado
+        </option>
+
+        <option value="headshot">
+          Headshot
+        </option>
+
+        <option value="rush">
+          Rush / Agresivo
+        </option>
+
+        <option value="sniper">
+          Sniper
+        </option>
+
+      </select>
+
+
+      <button onclick="generarSensi()">
+
+        ⚡ GENERAR SENSIBILIDAD
+
+      </button>
+
+    </div>
+
+
+    <div
+      class="card result"
+      id="resultado"
+    >
+
+      <div
+        class="phone-title"
+        id="nombreResultado"
+      ></div>
+
+
+      <div class="sensi-grid">
+
+
+        <div class="sensi">
+
+          <span>
+            General
+          </span>
+
+          <strong id="general">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="sensi">
+
+          <span>
+            Punto rojo
+          </span>
+
+          <strong id="rojo">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="sensi">
+
+          <span>
+            Mira 2X
+          </span>
+
+          <strong id="mira2">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="sensi">
+
+          <span>
+            Mira 4X
+          </span>
+
+          <strong id="mira4">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="sensi">
+
+          <span>
+            Mira AWM
+          </span>
+
+          <strong id="awm">
+            0
+          </strong>
+
+        </div>
+
+
+        <div class="sensi">
+
+          <span>
+            Free Look
+          </span>
+
+          <strong id="free">
+            0
+          </strong>
+
+        </div>
+
+
+      </div>
+
+
+      <button
+        class="copy"
+        onclick="copiarSensi()"
+      >
+
+        📋 COPIAR SENSIBILIDAD
+
+      </button>
+
+
+      <div class="info">
+
+        Esta configuración es una recomendación
+        inicial.
+
+        La sensibilidad puede variar según el
+        dispositivo, FPS, DPI y forma de jugar.
+
+      </div>
+
+    </div>
+
+
+    <footer>
+
+      SENSI FF © 2026
+
+    </footer>
+
+  </div>
+
+
+
+<script>
+
+
+/* =========================================
+   LISTA DE CELULARES
+========================================= */
+
+
+const celulares = {
+
+
+  samsung: {
+
+    "Galaxy A05": 82,
+
+    "Galaxy A15": 88,
+
+    "Galaxy A25": 92,
+
+    "Galaxy A35": 96,
+
+    "Galaxy A55": 100,
+
+    "Galaxy S21": 105,
+
+    "Galaxy S22": 108,
+
+    "Galaxy S23": 112,
+
+    "Galaxy S24": 115
+
+  },
+
+
+  xiaomi: {
+
+    "Redmi 10": 82,
+
+    "Redmi Note 11": 88,
+
+    "Redmi Note 12": 92,
+
+    "Redmi Note 13": 96,
+
+    "Redmi Note 13 Pro": 102,
+
+    "Redmi Note 14": 105,
+
+    "POCO X3 Pro": 98,
+
+    "POCO X5 Pro": 103,
+
+    "POCO X6 Pro": 108
+
+  },
+
+
+  /* =====================================
+     MOTOROLA
+  ====================================== */
+
+
+  motorola: {
+
+    "Moto G22": 82,
+
+    "Moto G32": 87,
+
+    "Moto G52": 91,
+
+    "Moto G54": 95,
+
+    "Moto G84": 100,
+
+
+    /* EDGE 20 */
+
+    "Motorola Edge 20": 100,
+
+    "Motorola Edge 20 Lite": 96,
+
+    "Motorola Edge 20 Pro": 105,
+
+
+    /* EDGE 30 */
+
+    "Motorola Edge 30": 103,
+
+    "Motorola Edge 30 Neo": 100,
+
+    "Motorola Edge 30 Fusion": 106,
+
+    "Motorola Edge 30 Pro": 110,
+
+    "Motorola Edge 30 Ultra": 115,
+
+
+    /* EDGE 40 */
+
+    "Motorola Edge 40": 108,
+
+    "Motorola Edge 40 Neo": 105,
+
+    "Motorola Edge 40 Pro": 114,
+
+
+    /* EDGE 50 */
+
+    "Motorola Edge 50 Fusion": 106,
+
+    "Motorola Edge 50": 111,
+
+    "Motorola Edge 50 Neo": 109,
+
+    "Motorola Edge 50 Pro": 113,
+
+    "Motorola Edge 50 Ultra": 118,
+
+
+    /* EDGE 60 */
+
+    "Motorola Edge 60 Fusion": 110,
+
+    "Motorola Edge 60": 113,
+
+    "Motorola Edge 60 Pro": 117
+
+  },
+
+
+  iphone: {
+
+    "iPhone 11": 100,
+
+    "iPhone 12": 103,
+
+    "iPhone 13": 106,
+
+    "iPhone 14": 108,
+
+    "iPhone 15": 111,
+
+    "iPhone 16": 114,
+
+    "iPhone 17": 117
+
+  },
+
+
+  realme: {
+
+    "Realme C35": 84,
+
+    "Realme C55": 90,
+
+    "Realme 9": 94,
+
+    "Realme 10": 98,
+
+    "Realme 11": 102,
+
+    "Realme GT Neo": 108
+
+  },
+
+
+  oppo: {
+
+    "OPPO A57": 84,
+
+    "OPPO A78": 91,
+
+    "OPPO A98": 98,
+
+    "OPPO Reno 8": 103,
+
+    "OPPO Reno 10": 107,
+
+    "OPPO Find X": 112
+
+  },
+
+
+  infinix: {
+
+    "Infinix Hot 12": 82,
+
+    "Infinix Hot 20": 87,
+
+    "Infinix Hot 30": 92,
+
+    "Infinix Hot 40": 96,
+
+    "Infinix Note 30": 101,
+
+    "Infinix GT 20 Pro": 108
+
+  }
+
+};
+
+
+
+/* =========================================
+   CARGAR MODELOS
+========================================= */
+
+
+function cargarModelos() {
+
+
+  const marca =
+    document.getElementById("marca").value;
+
+
+  const modelo =
+    document.getElementById("modelo");
+
+
+  modelo.innerHTML = "";
+
+
+  if (!marca) {
+
+    modelo.innerHTML =
+      '<option value="">Primero selecciona una marca</option>';
+
+    return;
+
+  }
+
+
+  const lista =
+    celulares[marca];
+
+
+  for (
+    const nombre in lista
+  ) {
+
+
+    const opcion =
+      document.createElement("option");
+
+
+    opcion.value =
+      nombre;
+
+
+    opcion.textContent =
+      nombre;
+
+
+    modelo.appendChild(
+      opcion
+    );
+
+  }
+
+}
+
+
+
+/* =========================================
+   LIMITAR SENSIBILIDAD
+========================================= */
+
+
+function limitar(numero) {
+
+  return Math.max(
+    1,
+    Math.min(
+      200,
+      Math.round(numero)
+    )
+  );
+
+}
+
+
+
+/* =========================================
+   GENERAR SENSIBILIDAD
+========================================= */
+
+
+function generarSensi() {
+
+
+  const marca =
+    document.getElementById("marca").value;
+
+
+  const modelo =
+    document.getElementById("modelo").value;
+
+
+  const dedos =
+    Number(
+      document.getElementById("dedos").value
+    );
+
+
+  const estilo =
+    document.getElementById("estilo").value;
+
+
+
+  if (
+    !marca ||
+    !modelo
+  ) {
+
+    alert(
+      "Selecciona la marca y el modelo de tu celular."
+    );
+
+    return;
+
+  }
+
+
+
+  let base =
+    celulares[marca][modelo];
+
+
+
+  /* AJUSTE POR DEDOS */
+
+
+  if (dedos === 2) {
+
+    base -= 5;
+
+  }
+
+
+  if (dedos === 3) {
+
+    base += 2;
+
+  }
+
+
+  if (dedos === 4) {
+
+    base += 5;
+
+  }
+
+
+
+  /* AJUSTE POR ESTILO */
+
+
+  if (
+    estilo === "headshot"
+  ) {
+
+    base += 8;
+
+  }
+
+
+  if (
+    estilo === "rush"
+  ) {
+
+    base += 12;
+
+  }
+
+
+  if (
+    estilo === "sniper"
+  ) {
+
+    base -= 8;
+
+  }
+
+
+
+  /* SENSIBILIDADES */
+
+
+  const general =
+    limitar(
+      base + 20
+    );
+
+
+  const rojo =
+    limitar(
+      base + 10
+    );
+
+
+  const mira2 =
+    limitar(
+      base
+    );
+
+
+  const mira4 =
+    limitar(
+      base - 8
+    );
+
+
+  const awm =
+    limitar(
+      base - 30
+    );
+
+
+  const free =
+    limitar(
+      base + 15
+    );
+
+
+
+  /* MOSTRAR RESULTADOS */
+
+
+  document.getElementById(
+    "general"
+  ).textContent =
+    general;
+
+
+  document.getElementById(
+    "rojo"
+  ).textContent =
+    rojo;
+
+
+  document.getElementById(
+    "mira2"
+  ).textContent =
+    mira2;
+
+
+  document.getElementById(
+    "mira4"
+  ).textContent =
+    mira4;
+
+
+  document.getElementById(
+    "awm"
+  ).textContent =
+    awm;
+
+
+  document.getElementById(
+    "free"
+  ).textContent =
+    free;
+
+
+
+  document.getElementById(
+    "nombreResultado"
+  ).textContent =
+    "🔥 " + modelo;
+
+
+
+  document.getElementById(
+    "resultado"
+  ).style.display =
+    "block";
+
+
+
+  document.getElementById(
+    "resultado"
+  ).scrollIntoView({
+
+    behavior: "smooth"
+
+  });
+
+}
+
+
+
+/* =========================================
+   COPIAR SENSIBILIDAD
+========================================= */
+
+
+function copiarSensi() {
+
+
+  const modelo =
+    document.getElementById(
+      "modelo"
+    ).value;
+
+
+  const texto =
+
+`🔥 SENSIBILIDAD FREE FIRE
+
+📱 Celular: ${modelo}
+
+General: ${document.getElementById("general").textContent}
+
+Punto rojo: ${document.getElementById("rojo").textContent}
+
+Mira 2X: ${document.getElementById("mira2").textContent}
+
+Mira 4X: ${document.getElementById("mira4").textContent}
+
+Mira AWM: ${document.getElementById("awm").textContent}
+
+Free Look: ${document.getElementById("free").textContent}`;
+
+
+
+  navigator.clipboard
+    .writeText(texto)
+
+    .then(() => {
+
+      alert(
+        "✅ Sensibilidad copiada"
+      );
+
+    })
+
+    .catch(() => {
+
+      alert(
+        "No se pudo copiar automáticamente."
+      );
+
+    });
+
+}
+
+
+</script>
+
+</body>
+</html>
