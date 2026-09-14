@@ -3,142 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>🔥 SENSI FF - Generador de sensibilidad para Free Fire</title>
+<meta name="theme-color" content="#7c3aed">
+<title>🔥 SENSI FF - Generador de sensibilidad</title>
 
 <style>
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
 }
 
 body {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #090014, #18002f, #05000a);
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top, #241044 0%, #0b0612 45%, #050308 100%);
   color: white;
+  min-height: 100vh;
   padding: 20px;
 }
 
 .container {
   width: 100%;
-  max-width: 650px;
+  max-width: 700px;
   margin: auto;
 }
 
-header {
+.header {
   text-align: center;
   margin-bottom: 25px;
 }
 
-header h1 {
-  font-size: 30px;
-  color: #b86cff;
-  text-shadow: 0 0 15px #8a2be2;
+.logo {
+  font-size: 34px;
+  font-weight: 900;
+  color: #c084fc;
+  text-shadow: 0 0 15px #9333ea;
+  margin-bottom: 8px;
 }
 
-header p {
-  color: #ccc;
-  margin-top: 8px;
+.subtitle {
+  color: #c4b5fd;
+  font-size: 15px;
 }
 
 .card {
-  background: rgba(20, 10, 35, 0.95);
-  border: 1px solid #6825a5;
+  background: rgba(18, 10, 30, 0.95);
+  border: 1px solid #6d28d9;
   border-radius: 18px;
   padding: 22px;
   margin-bottom: 18px;
-  box-shadow: 0 0 25px rgba(138, 43, 226, 0.18);
+  box-shadow:
+    0 0 20px rgba(124, 58, 237, 0.18),
+    inset 0 0 20px rgba(124, 58, 237, 0.03);
 }
 
 label {
   display: block;
-  margin-bottom: 8px;
   font-weight: bold;
-  color: #ddd;
+  color: #ddd6fe;
+  margin-bottom: 8px;
 }
 
 select {
   width: 100%;
   padding: 14px;
-  margin-bottom: 18px;
-  border-radius: 10px;
-  border: 1px solid #7030ad;
-  background: #10091a;
+  margin-bottom: 17px;
+  border-radius: 12px;
+  border: 1px solid #7c3aed;
+  background: #12091e;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   outline: none;
 }
 
 select:focus {
-  border-color: #b86cff;
-  box-shadow: 0 0 10px rgba(184,108,255,0.4);
+  border-color: #c084fc;
+  box-shadow: 0 0 10px rgba(192, 132, 252, 0.3);
 }
 
 button {
   width: 100%;
   padding: 15px;
   border: none;
-  border-radius: 12px;
-  background: linear-gradient(90deg, #7b2cff, #b86cff);
-  color: white;
-  font-size: 17px;
-  font-weight: bold;
+  border-radius: 13px;
+  font-size: 16px;
+  font-weight: 900;
   cursor: pointer;
-  box-shadow: 0 0 18px rgba(138,43,226,0.35);
+  transition: 0.2s;
 }
 
-button:active {
-  transform: scale(0.98);
+.btn-generar {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: white;
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.4);
 }
 
-.resultado {
+.btn-generar:hover {
+  transform: scale(1.02);
+}
+
+.btn-copiar {
+  margin-top: 15px;
+  background: #251238;
+  color: #ddd6fe;
+  border: 1px solid #7c3aed;
+}
+
+.btn-copiar:hover {
+  background: #35174e;
+}
+
+.resultados {
   display: none;
+}
+
+.resultados h2 {
+  text-align: center;
+  color: #c084fc;
+  margin-bottom: 18px;
 }
 
 .sensi-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
-.sensi {
-  background: #10091a;
-  border: 1px solid #542080;
-  border-radius: 12px;
-  padding: 16px;
+.sensi-box {
+  background: linear-gradient(145deg, #170c24, #0d0714);
+  border: 1px solid #6d28d9;
+  border-radius: 14px;
+  padding: 15px;
   text-align: center;
 }
 
-.sensi span {
-  display: block;
-  color: #bbb;
+.sensi-nombre {
+  color: #c4b5fd;
   font-size: 14px;
   margin-bottom: 8px;
 }
 
-.sensi strong {
-  color: #c68cff;
-  font-size: 28px;
-}
-
-.copy {
-  margin-top: 15px;
-  background: linear-gradient(90deg, #4d16a8, #8b32d8);
+.sensi-numero {
+  font-size: 30px;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 0 10px #9333ea;
 }
 
 .info {
-  color: #bbb;
-  line-height: 1.6;
-  font-size: 14px;
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 12px;
+  background: #12091e;
+  border: 1px solid #3b1a5e;
+  color: #bca9d4;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
-footer {
+.pc-info {
+  display: none;
+}
+
+.footer {
   text-align: center;
-  color: #777;
-  margin-top: 25px;
-  padding-bottom: 15px;
+  color: #806b91;
+  font-size: 12px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.badge {
+  display: inline-block;
+  background: #2e1065;
+  border: 1px solid #7c3aed;
+  color: #d8b4fe;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 12px;
 }
 
 @media (max-width: 500px) {
@@ -146,20 +189,20 @@ footer {
     padding: 12px;
   }
 
-  header h1 {
-    font-size: 25px;
+  .logo {
+    font-size: 27px;
   }
 
   .card {
-    padding: 16px;
+    padding: 17px;
   }
 
   .sensi-grid {
     grid-template-columns: 1fr 1fr;
   }
 
-  .sensi strong {
-    font-size: 24px;
+  .sensi-numero {
+    font-size: 27px;
   }
 }
 </style>
@@ -169,299 +212,318 @@ footer {
 
 <div class="container">
 
-<header>
-  <h1>🔥 SENSI FF</h1>
-  <p>Generador de sensibilidad para Free Fire</p>
-</header>
+  <div class="header">
+    <div class="logo">🔥 SENSI FF</div>
+    <div class="subtitle">Generador de sensibilidad para Free Fire</div>
+  </div>
 
-<div class="card">
+  <div class="card">
 
-  <label for="marca">📱 Marca</label>
-  <select id="marca" onchange="cargarModelos()">
-    <option value="">Seleccioná tu marca</option>
-    <option value="samsung">Samsung</option>
-    <option value="xiaomi">Xiaomi</option>
-    <option value="motorola">Motorola</option>
-    <option value="iphone">iPhone</option>
-    <option value="realme">Realme</option>
-    <option value="oppo">OPPO</option>
-    <option value="infinix">Infinix</option>
-  </select>
+    <div class="badge">🎯 GENERADOR AUTOMÁTICO</div>
 
-  <label for="modelo">📲 Modelo</label>
-  <select id="modelo">
-    <option value="">Primero elegí una marca</option>
-  </select>
+    <label for="tipo">Tipo de dispositivo</label>
+    <select id="tipo" onchange="cambiarTipo()">
+      <option value="">Seleccionar dispositivo</option>
+      <option value="celular">📱 Celular</option>
+      <option value="pc">💻 PC / Notebook</option>
+    </select>
 
-  <label for="dedos">👆 Cantidad de dedos</label>
-  <select id="dedos">
-    <option value="2">2 dedos</option>
-    <option value="3">3 dedos</option>
-    <option value="4">4 dedos</option>
-  </select>
+    <div id="celularOpciones">
 
-  <label for="estilo">🎮 Estilo de juego</label>
-  <select id="estilo">
-    <option value="equilibrado">Equilibrado</option>
-    <option value="headshot">Headshot</option>
-    <option value="rush">Rush</option>
-    <option value="sniper">Sniper</option>
-  </select>
+      <label for="marca">Marca del celular</label>
+      <select id="marca" onchange="cargarModelos()">
+        <option value="">Seleccionar marca</option>
+        <option value="samsung">Samsung</option>
+        <option value="xiaomi">Xiaomi</option>
+        <option value="motorola">Motorola</option>
+        <option value="iphone">iPhone</option>
+        <option value="realme">Realme</option>
+        <option value="oppo">OPPO</option>
+        <option value="infinix">Infinix</option>
+      </select>
 
-  <button onclick="generarSensi()">
-    🔥 GENERAR SENSIBILIDAD
-  </button>
+      <label for="modelo">Modelo</label>
+      <select id="modelo">
+        <option value="">Primero seleccioná una marca</option>
+      </select>
 
-</div>
+      <label for="dedos">Cantidad de dedos</label>
+      <select id="dedos">
+        <option value="2">👆 2 dedos</option>
+        <option value="3">✌️ 3 dedos</option>
+        <option value="4">🖐️ 4 dedos</option>
+      </select>
 
-<div class="card resultado" id="resultado">
-
-  <h2 style="text-align:center; margin-bottom:18px;">
-    🎯 Tu sensibilidad
-  </h2>
-
-  <div class="sensi-grid">
-
-    <div class="sensi">
-      <span>General</span>
-      <strong id="general">0</strong>
     </div>
 
-    <div class="sensi">
-      <span>Punto rojo</span>
-      <strong id="rojo">0</strong>
+    <div id="pcOpciones" style="display:none;">
+
+      <label for="marcaPc">Marca de PC / Notebook</label>
+      <select id="marcaPc" onchange="cargarModelosPc()">
+        <option value="">Seleccionar marca</option>
+        <option value="acer">Acer</option>
+        <option value="asus">ASUS</option>
+        <option value="lenovo">Lenovo</option>
+        <option value="hp">HP</option>
+        <option value="dell">Dell</option>
+      </select>
+
+      <label for="modeloPc">Modelo</label>
+      <select id="modeloPc">
+        <option value="">Primero seleccioná una marca</option>
+      </select>
+
     </div>
 
-    <div class="sensi">
-      <span>Mira 2X</span>
-      <strong id="mira2">0</strong>
-    </div>
+    <label for="estilo">Estilo de juego</label>
+    <select id="estilo">
+      <option value="equilibrado">🎮 Equilibrado</option>
+      <option value="headshot">🎯 Headshot</option>
+      <option value="rush">⚡ Rush</option>
+      <option value="sniper">🔭 Sniper</option>
+    </select>
 
-    <div class="sensi">
-      <span>Mira 4X</span>
-      <strong id="mira4">0</strong>
-    </div>
-
-    <div class="sensi">
-      <span>Mira AWM</span>
-      <strong id="awm">0</strong>
-    </div>
-
-    <div class="sensi">
-      <span>Free Look</span>
-      <strong id="free">0</strong>
-    </div>
+    <button class="btn-generar" onclick="generarSensi()">
+      🔥 GENERAR SENSIBILIDAD
+    </button>
 
   </div>
 
-  <button class="copy" onclick="copiarSensi()">
-    📋 COPIAR SENSIBILIDAD
-  </button>
+
+  <div class="card resultados" id="resultados">
+
+    <h2>🎯 Tu sensibilidad</h2>
+
+    <div class="sensi-grid">
+
+      <div class="sensi-box">
+        <div class="sensi-nombre">General</div>
+        <div class="sensi-numero" id="general">0</div>
+      </div>
+
+      <div class="sensi-box">
+        <div class="sensi-nombre">Punto rojo</div>
+        <div class="sensi-numero" id="rojo">0</div>
+      </div>
+
+      <div class="sensi-box">
+        <div class="sensi-nombre">Mira 2X</div>
+        <div class="sensi-numero" id="mira2">0</div>
+      </div>
+
+      <div class="sensi-box">
+        <div class="sensi-nombre">Mira 4X</div>
+        <div class="sensi-numero" id="mira4">0</div>
+      </div>
+
+      <div class="sensi-box">
+        <div class="sensi-nombre">Mira AWM</div>
+        <div class="sensi-numero" id="awm">0</div>
+      </div>
+
+      <div class="sensi-box">
+        <div class="sensi-nombre">Free Look</div>
+        <div class="sensi-numero" id="free">0</div>
+      </div>
+
+    </div>
+
+    <div class="info" id="infoResultado"></div>
+
+    <button class="btn-copiar" onclick="copiarSensi()">
+      📋 COPIAR SENSIBILIDAD
+    </button>
+
+  </div>
+
+
+  <div class="footer">
+    🔥 SENSI FF • Recomendaciones orientativas para Free Fire
+  </div>
 
 </div>
 
-<div class="card info">
-
-  <strong>ℹ️ Información</strong>
-
-  <p style="margin-top:10px;">
-    Esta configuración es una recomendación inicial.
-  </p>
-
-  <p style="margin-top:10px;">
-    La sensibilidad puede variar según el dispositivo,
-    FPS, DPI, tamaño de pantalla y forma de jugar.
-  </p>
-
-  <p style="margin-top:10px;">
-    🔥 Cada vez que generes una sensibilidad,
-    el sistema hará pequeñas variaciones para que
-    no recibas siempre exactamente los mismos valores.
-  </p>
-
-</div>
-
-<footer>
-  SENSI FF © 2026
-</footer>
-
-</div>
 
 <script>
 
 /* =====================================================
-   LISTA DE CELULARES
+   CELULARES
 ===================================================== */
 
 const celulares = {
 
   samsung: {
 
-    /* GALAXY A */
-
-    "Galaxy A02": 78,
-    "Galaxy A02s": 79,
-    "Galaxy A03": 80,
-    "Galaxy A03s": 80,
-    "Galaxy A04": 81,
-    "Galaxy A04e": 80,
-    "Galaxy A04s": 82,
+    /* Galaxy A */
+    "Galaxy A02": 75,
+    "Galaxy A02s": 76,
+    "Galaxy A03": 78,
+    "Galaxy A03s": 79,
+    "Galaxy A04": 80,
+    "Galaxy A04e": 79,
+    "Galaxy A04s": 81,
     "Galaxy A05": 82,
     "Galaxy A05s": 84,
-    "Galaxy A06": 84,
+    "Galaxy A06": 85,
 
-    "Galaxy A10": 82,
-    "Galaxy A10s": 83,
-    "Galaxy A11": 84,
-    "Galaxy A12": 86,
-    "Galaxy A13": 87,
-    "Galaxy A14": 89,
-    "Galaxy A15": 88,
-    "Galaxy A16": 91,
+    "Galaxy A10": 80,
+    "Galaxy A10s": 81,
+    "Galaxy A11": 82,
+    "Galaxy A12": 84,
+    "Galaxy A13": 86,
+    "Galaxy A14": 88,
+    "Galaxy A15": 90,
+    "Galaxy A16": 92,
 
-    "Galaxy A20": 85,
-    "Galaxy A20s": 86,
-    "Galaxy A21": 87,
+    "Galaxy A20": 84,
+    "Galaxy A20s": 85,
+    "Galaxy A21": 86,
     "Galaxy A21s": 88,
-    "Galaxy A22": 88,
-    "Galaxy A23": 90,
-    "Galaxy A24": 92,
-    "Galaxy A25": 92,
-    "Galaxy A26": 96,
+    "Galaxy A22": 90,
+    "Galaxy A23": 92,
+    "Galaxy A24": 94,
+    "Galaxy A25": 96,
+    "Galaxy A26": 98,
 
     "Galaxy A30": 88,
     "Galaxy A30s": 89,
-    "Galaxy A31": 90,
-    "Galaxy A32": 92,
-    "Galaxy A33": 94,
-    "Galaxy A34": 96,
-    "Galaxy A35": 96,
-    "Galaxy A36": 100,
+    "Galaxy A31": 91,
+    "Galaxy A32": 93,
+    "Galaxy A33 5G": 95,
+    "Galaxy A34 5G": 98,
+    "Galaxy A35 5G": 100,
+    "Galaxy A36 5G": 103,
 
-    "Galaxy A40": 89,
-    "Galaxy A41": 91,
-    "Galaxy A42": 93,
+    "Galaxy A40": 90,
+    "Galaxy A41": 92,
+    "Galaxy A42 5G": 94,
 
-    "Galaxy A50": 92,
-    "Galaxy A50s": 93,
-    "Galaxy A51": 94,
-    "Galaxy A52": 97,
-    "Galaxy A52s": 99,
-    "Galaxy A53": 101,
-    "Galaxy A54": 103,
-    "Galaxy A55": 100,
-    "Galaxy A56": 107,
-    "Galaxy A57": 109,
+    "Galaxy A50": 93,
+    "Galaxy A50s": 94,
+    "Galaxy A51": 96,
+    "Galaxy A51 5G": 98,
+    "Galaxy A52": 100,
+    "Galaxy A52 5G": 101,
+    "Galaxy A52s 5G": 103,
+    "Galaxy A53 5G": 105,
+    "Galaxy A54 5G": 107,
+    "Galaxy A55 5G": 109,
+    "Galaxy A56 5G": 112,
+    "Galaxy A57 5G": 114,
 
-    "Galaxy A70": 98,
-    "Galaxy A70s": 99,
+    "Galaxy A60": 94,
+    "Galaxy A70": 96,
+    "Galaxy A70s": 97,
     "Galaxy A71": 100,
-    "Galaxy A72": 102,
-    "Galaxy A73": 105,
+    "Galaxy A71 5G": 102,
+    "Galaxy A72": 103,
+    "Galaxy A73 5G": 106,
 
-    /* GALAXY S */
-
-    "Galaxy S8": 96,
-    "Galaxy S8+": 98,
-    "Galaxy S9": 99,
-    "Galaxy S9+": 101,
-
+    /* Galaxy S */
+    "Galaxy S8": 98,
+    "Galaxy S8+": 100,
+    "Galaxy S9": 100,
+    "Galaxy S9+": 102,
     "Galaxy S10": 103,
     "Galaxy S10+": 105,
     "Galaxy S10e": 101,
     "Galaxy S10 5G": 106,
 
-    "Galaxy S20": 107,
-    "Galaxy S20+": 109,
-    "Galaxy S20 Ultra": 111,
-    "Galaxy S20 FE": 108,
+    "Galaxy S20": 106,
+    "Galaxy S20+": 108,
+    "Galaxy S20 Ultra": 110,
+    "Galaxy S20 FE": 104,
 
     "Galaxy S21": 105,
-    "Galaxy S21+": 112,
-    "Galaxy S21 Ultra": 114,
-    "Galaxy S21 FE": 111,
+    "Galaxy S21+": 107,
+    "Galaxy S21 Ultra": 110,
+    "Galaxy S21 FE": 106,
 
     "Galaxy S22": 108,
-    "Galaxy S22+": 115,
-    "Galaxy S22 Ultra": 117,
+    "Galaxy S22+": 110,
+    "Galaxy S22 Ultra": 113,
 
     "Galaxy S23": 112,
-    "Galaxy S23+": 117,
-    "Galaxy S23 Ultra": 119,
-    "Galaxy S23 FE": 116,
+    "Galaxy S23+": 114,
+    "Galaxy S23 Ultra": 116,
+    "Galaxy S23 FE": 111,
 
     "Galaxy S24": 115,
-    "Galaxy S24+": 119,
-    "Galaxy S24 Ultra": 121,
-    "Galaxy S24 FE": 118,
+    "Galaxy S24+": 117,
+    "Galaxy S24 Ultra": 120,
+    "Galaxy S24 FE": 114,
 
-    "Galaxy S25": 119,
-    "Galaxy S25+": 121,
+    "Galaxy S25": 118,
+    "Galaxy S25+": 120,
     "Galaxy S25 Ultra": 123,
-    "Galaxy S25 FE": 120,
+    "Galaxy S25 FE": 117,
 
     "Galaxy S26": 121,
     "Galaxy S26+": 123,
-    "Galaxy S26 Ultra": 125,
+    "Galaxy S26 Ultra": 126,
 
-    /* GALAXY NOTE */
-
+    /* Galaxy Note */
     "Galaxy Note 8": 98,
-    "Galaxy Note 9": 101,
-    "Galaxy Note 10": 104,
-    "Galaxy Note 10+": 106,
+    "Galaxy Note 9": 100,
+    "Galaxy Note 10": 103,
+    "Galaxy Note 10+": 105,
     "Galaxy Note 10 Lite": 100,
-    "Galaxy Note 20": 109,
+    "Galaxy Note 20": 108,
     "Galaxy Note 20 Ultra": 112,
 
-    /* GALAXY M */
-
-    "Galaxy M02": 78,
-    "Galaxy M02s": 79,
-    "Galaxy M04": 81,
+    /* Galaxy M */
+    "Galaxy M02": 75,
+    "Galaxy M02s": 76,
+    "Galaxy M04": 79,
     "Galaxy M10": 80,
     "Galaxy M11": 82,
-    "Galaxy M12": 85,
-    "Galaxy M13": 87,
-    "Galaxy M14": 89,
-    "Galaxy M15": 91,
+    "Galaxy M12": 84,
+    "Galaxy M13": 86,
+    "Galaxy M14 5G": 88,
+    "Galaxy M15 5G": 90,
     "Galaxy M20": 84,
     "Galaxy M21": 86,
     "Galaxy M22": 88,
-    "Galaxy M23": 90,
-    "Galaxy M30": 87,
-    "Galaxy M31": 89,
+    "Galaxy M23 5G": 91,
+    "Galaxy M30": 88,
+    "Galaxy M31": 90,
     "Galaxy M32": 92,
-    "Galaxy M33": 94,
-    "Galaxy M34": 96,
-    "Galaxy M35": 98,
-    "Galaxy M51": 96,
-    "Galaxy M52": 99,
-    "Galaxy M53": 101,
-    "Galaxy M54": 103,
-    "Galaxy M55": 105,
+    "Galaxy M33 5G": 95,
+    "Galaxy M34 5G": 97,
+    "Galaxy M35 5G": 100,
+    "Galaxy M51": 100,
+    "Galaxy M52 5G": 103,
+    "Galaxy M53 5G": 105,
+    "Galaxy M54 5G": 108,
+    "Galaxy M55": 111,
 
-    /* GALAXY Z FLIP */
+    /* Galaxy Z */
+    "Galaxy Z Flip": 103,
+    "Galaxy Z Flip 3": 106,
+    "Galaxy Z Flip 4": 109,
+    "Galaxy Z Flip 5": 112,
+    "Galaxy Z Flip 6": 115,
+    "Galaxy Z Flip 7": 118,
+    "Galaxy Z Fold": 105,
+    "Galaxy Z Fold 2": 108,
+    "Galaxy Z Fold 3": 111,
+    "Galaxy Z Fold 4": 114,
+    "Galaxy Z Fold 5": 117,
+    "Galaxy Z Fold 6": 120,
+    "Galaxy Z Fold 7": 123,
 
-    "Galaxy Z Flip": 100,
-    "Galaxy Z Flip 3": 105,
-    "Galaxy Z Flip 4": 108,
-    "Galaxy Z Flip 5": 111,
-    "Galaxy Z Flip 6": 114,
-    "Galaxy Z Flip 7": 117,
+    /* Galaxy F */
+    "Galaxy F02s": 76,
+    "Galaxy F12": 84,
+    "Galaxy F13": 86,
+    "Galaxy F14 5G": 88,
+    "Galaxy F15 5G": 90,
+    "Galaxy F22": 88,
+    "Galaxy F23 5G": 92,
+    "Galaxy F34 5G": 97,
+    "Galaxy F54 5G": 108,
 
-    /* GALAXY Z FOLD */
-
-    "Galaxy Z Fold": 102,
-    "Galaxy Z Fold 2": 105,
-    "Galaxy Z Fold 3": 108,
-    "Galaxy Z Fold 4": 111,
-    "Galaxy Z Fold 5": 114,
-    "Galaxy Z Fold 6": 117,
-    "Galaxy Z Fold 7": 120,
-
-    /* GALAXY J */
-
+    /* Galaxy J */
     "Galaxy J2": 72,
     "Galaxy J2 Prime": 74,
     "Galaxy J4": 76,
@@ -470,97 +532,45 @@ const celulares = {
     "Galaxy J6+": 82,
     "Galaxy J7": 84,
     "Galaxy J7 Prime": 86,
-    "Galaxy J7 Pro": 88,
-
-    /* GALAXY F */
-
-    "Galaxy F02s": 76,
-    "Galaxy F12": 84,
-    "Galaxy F13": 86,
-    "Galaxy F14": 88,
-    "Galaxy F15": 90,
-    "Galaxy F22": 88,
-    "Galaxy F23": 92,
-    "Galaxy F34": 97,
-    "Galaxy F54": 108
+    "Galaxy J7 Pro": 88
   },
-
-
-  /* =====================================================
-     XIAOMI
-  ===================================================== */
 
   xiaomi: {
-
-    "Redmi 9": 82,
     "Redmi 9A": 78,
     "Redmi 9C": 80,
-    "Redmi 10": 85,
-    "Redmi 10C": 83,
-    "Redmi 12": 88,
-    "Redmi 13": 91,
-    "Redmi 14C": 93,
-
-    "Redmi Note 8": 86,
-    "Redmi Note 9": 88,
-    "Redmi Note 10": 91,
-    "Redmi Note 11": 94,
-    "Redmi Note 12": 97,
-    "Redmi Note 13": 100,
-    "Redmi Note 14": 103,
-
-    "Redmi Note 13 Pro": 105,
-    "Redmi Note 13 Pro+": 108,
-    "Redmi Note 14 Pro": 110,
-    "Redmi Note 14 Pro+": 113,
-
-    "Poco X3": 96,
-    "Poco X3 Pro": 102,
-    "Poco X4 Pro": 105,
-    "Poco X5": 108,
-    "Poco X5 Pro": 112,
-    "Poco X6": 115,
-    "Poco X6 Pro": 120,
-    "Poco X7": 122,
-    "Poco X7 Pro": 125,
-
-    "Poco F3": 108,
-    "Poco F4": 112,
-    "Poco F5": 116,
-    "Poco F5 Pro": 120,
-    "Poco F6": 123,
-    "Poco F6 Pro": 126
+    "Redmi 10": 86,
+    "Redmi 10C": 88,
+    "Redmi 12": 92,
+    "Redmi 12C": 86,
+    "Redmi 13": 94,
+    "Redmi Note 8": 90,
+    "Redmi Note 9": 92,
+    "Redmi Note 10": 96,
+    "Redmi Note 11": 99,
+    "Redmi Note 12": 103,
+    "Redmi Note 13": 107,
+    "Redmi Note 14": 111,
+    "POCO X3": 101,
+    "POCO X3 Pro": 106,
+    "POCO X4 Pro": 108,
+    "POCO X5": 110,
+    "POCO X6": 114,
+    "POCO F3": 108,
+    "POCO F4": 111,
+    "POCO F5": 115,
+    "POCO F6": 119
   },
 
-
-  /* =====================================================
-     MOTOROLA
-  ===================================================== */
-
   motorola: {
-
     "Moto G22": 82,
     "Moto G32": 87,
     "Moto G52": 91,
     "Moto G54": 95,
     "Moto G84": 100,
 
-    "Moto G23": 88,
-    "Moto G24": 90,
-    "Moto G34": 93,
-    "Moto G35": 95,
-    "Moto G42": 89,
-    "Moto G53": 93,
-    "Moto G62": 96,
-    "Moto G72": 98,
-    "Moto G73": 101,
-    "Moto G75": 105,
-    "Moto G85": 104,
-
     "Motorola Edge 20": 100,
     "Motorola Edge 20 Lite": 96,
     "Motorola Edge 20 Pro": 105,
-
     "Motorola Edge 30": 103,
     "Motorola Edge 30 Neo": 100,
     "Motorola Edge 30 Fusion": 106,
@@ -582,162 +592,203 @@ const celulares = {
     "Motorola Edge 60 Pro": 117
   },
 
-
-  /* =====================================================
-     IPHONE
-  ===================================================== */
-
   iphone: {
-
     "iPhone 8": 96,
-    "iPhone 8 Plus": 98,
-
     "iPhone X": 100,
     "iPhone XR": 103,
-    "iPhone XS": 105,
-    "iPhone XS Max": 107,
-
+    "iPhone XS": 104,
+    "iPhone XS Max": 105,
     "iPhone 11": 108,
     "iPhone 11 Pro": 110,
-    "iPhone 11 Pro Max": 112,
-
-    "iPhone SE 2020": 104,
-    "iPhone 12": 114,
-    "iPhone 12 mini": 112,
-    "iPhone 12 Pro": 116,
-    "iPhone 12 Pro Max": 118,
-
-    "iPhone 13": 120,
-    "iPhone 13 mini": 118,
-    "iPhone 13 Pro": 122,
-    "iPhone 13 Pro Max": 124,
-
-    "iPhone SE 2022": 115,
-
-    "iPhone 14": 122,
-    "iPhone 14 Plus": 124,
-    "iPhone 14 Pro": 125,
-    "iPhone 14 Pro Max": 127,
-
-    "iPhone 15": 128,
-    "iPhone 15 Plus": 130,
-    "iPhone 15 Pro": 130,
-    "iPhone 15 Pro Max": 132,
-
-    "iPhone 16": 133,
-    "iPhone 16 Plus": 135,
-    "iPhone 16 Pro": 135,
-    "iPhone 16 Pro Max": 137,
-
-    "iPhone 17": 138,
-    "iPhone 17 Pro": 140,
-    "iPhone 17 Pro Max": 142
+    "iPhone 11 Pro Max": 111,
+    "iPhone SE 2020": 101,
+    "iPhone 12": 112,
+    "iPhone 12 Mini": 108,
+    "iPhone 12 Pro": 114,
+    "iPhone 12 Pro Max": 116,
+    "iPhone 13": 115,
+    "iPhone 13 Mini": 112,
+    "iPhone 13 Pro": 117,
+    "iPhone 13 Pro Max": 119,
+    "iPhone 14": 118,
+    "iPhone 14 Plus": 120,
+    "iPhone 14 Pro": 122,
+    "iPhone 14 Pro Max": 124,
+    "iPhone 15": 121,
+    "iPhone 15 Plus": 123,
+    "iPhone 15 Pro": 125,
+    "iPhone 15 Pro Max": 127,
+    "iPhone 16": 124,
+    "iPhone 16 Plus": 126,
+    "iPhone 16 Pro": 128,
+    "iPhone 16 Pro Max": 130,
+    "iPhone 17": 127,
+    "iPhone 17 Pro": 131,
+    "iPhone 17 Pro Max": 133
   },
 
-
-  /* =====================================================
-     REALME
-  ===================================================== */
-
   realme: {
-
     "Realme C11": 78,
     "Realme C21": 82,
     "Realme C25": 86,
     "Realme C30": 84,
-    "Realme C31": 87,
+    "Realme C31": 86,
     "Realme C33": 88,
     "Realme C35": 91,
-    "Realme C51": 93,
-    "Realme C53": 95,
-    "Realme C55": 98,
-    "Realme C61": 100,
-    "Realme C63": 102,
-
-    "Realme 8": 96,
-    "Realme 9": 99,
-    "Realme 10": 102,
-    "Realme 11": 105,
-    "Realme 12": 108,
-    "Realme 13": 111,
-
-    "Realme GT": 112,
-    "Realme GT Neo 2": 115,
-    "Realme GT Neo 3": 118,
-    "Realme GT 5": 121,
-    "Realme GT 6": 124
+    "Realme C51": 92,
+    "Realme C53": 94,
+    "Realme C55": 97,
+    "Realme C67": 101,
+    "Realme 8": 99,
+    "Realme 9": 103,
+    "Realme 10": 106,
+    "Realme 11": 109,
+    "Realme 12": 112,
+    "Realme GT": 113,
+    "Realme GT 2": 116,
+    "Realme GT 3": 120,
+    "Realme GT 5": 123
   },
-
-
-  /* =====================================================
-     OPPO
-  ===================================================== */
 
   oppo: {
-
-    "OPPO A15": 78,
-    "OPPO A16": 80,
-    "OPPO A17": 82,
-    "OPPO A18": 84,
-    "OPPO A31": 86,
-    "OPPO A54": 89,
-    "OPPO A57": 91,
-    "OPPO A58": 94,
-    "OPPO A78": 98,
-    "OPPO A79": 101,
-    "OPPO A98": 104,
-
-    "OPPO Reno 5": 98,
-    "OPPO Reno 6": 101,
-    "OPPO Reno 7": 104,
-    "OPPO Reno 8": 107,
-    "OPPO Reno 10": 110,
-    "OPPO Reno 11": 113,
-    "OPPO Reno 12": 116,
-
-    "OPPO Find X3 Pro": 115,
-    "OPPO Find X5 Pro": 119,
-    "OPPO Find X6 Pro": 122,
-    "OPPO Find X7 Ultra": 126
+    "OPPO A16": 82,
+    "OPPO A17": 84,
+    "OPPO A18": 86,
+    "OPPO A38": 91,
+    "OPPO A58": 96,
+    "OPPO A60": 100,
+    "OPPO A78": 103,
+    "OPPO Reno 5": 101,
+    "OPPO Reno 6": 104,
+    "OPPO Reno 7": 107,
+    "OPPO Reno 8": 110,
+    "OPPO Reno 10": 114,
+    "OPPO Reno 11": 117,
+    "OPPO Reno 12": 120
   },
 
-
-  /* =====================================================
-     INFINIX
-  ===================================================== */
-
   infinix: {
-
     "Infinix Smart 5": 76,
-    "Infinix Smart 6": 78,
-    "Infinix Smart 7": 80,
-    "Infinix Smart 8": 83,
-    "Infinix Smart 9": 85,
-
-    "Infinix Hot 10": 84,
-    "Infinix Hot 11": 87,
-    "Infinix Hot 12": 90,
-    "Infinix Hot 20": 93,
-    "Infinix Hot 30": 96,
-    "Infinix Hot 40": 99,
-    "Infinix Hot 50": 102,
-
-    "Infinix Note 10": 94,
-    "Infinix Note 12": 98,
-    "Infinix Note 30": 102,
-    "Infinix Note 40": 106,
-
-    "Infinix GT 10 Pro": 112,
-    "Infinix GT 20 Pro": 118,
-    "Infinix GT 30 Pro": 122
+    "Infinix Smart 6": 79,
+    "Infinix Smart 7": 81,
+    "Infinix Smart 8": 84,
+    "Infinix Hot 10": 86,
+    "Infinix Hot 11": 89,
+    "Infinix Hot 12": 92,
+    "Infinix Hot 20": 96,
+    "Infinix Hot 30": 100,
+    "Infinix Hot 40": 104,
+    "Infinix Hot 50": 108,
+    "Infinix Note 10": 98,
+    "Infinix Note 12": 103,
+    "Infinix Note 30": 107,
+    "Infinix Note 40": 112,
+    "Infinix GT 10 Pro": 115,
+    "Infinix GT 20 Pro": 120
   }
-
 };
 
 
 /* =====================================================
-   CARGAR MODELOS
+   PC / NOTEBOOK
 ===================================================== */
+
+const computadoras = {
+
+  acer: {
+    "Aspire AL16-31P": 105,
+    "Aspire 3": 95,
+    "Aspire 5": 103,
+    "Aspire 7": 112,
+    "Nitro 5": 118,
+    "Nitro V 15": 120,
+    "Predator Helios 300": 125
+  },
+
+  asus: {
+    "VivoBook 15": 98,
+    "VivoBook 16": 101,
+    "ZenBook 14": 108,
+    "TUF Gaming F15": 116,
+    "TUF Gaming A15": 118,
+    "ROG Strix G15": 123,
+    "ROG Strix G16": 126
+  },
+
+  lenovo: {
+    "IdeaPad 1": 94,
+    "IdeaPad 3": 98,
+    "IdeaPad 5": 104,
+    "IdeaPad Gaming 3": 114,
+    "LOQ 15": 120,
+    "Legion 5": 124,
+    "Legion 7": 128
+  },
+
+  hp: {
+    "HP 14": 94,
+    "HP 15": 97,
+    "Pavilion 15": 103,
+    "Pavilion Gaming": 112,
+    "Victus 15": 118,
+    "Victus 16": 121,
+    "OMEN 16": 127
+  },
+
+  dell: {
+    "Inspiron 15": 98,
+    "Inspiron 16": 102,
+    "G15": 118,
+    "G16": 123,
+    "Alienware m16": 130
+  }
+};
+
+
+/* =====================================================
+   FUNCIONES
+===================================================== */
+
+function limitar(numero) {
+  return Math.max(1, Math.min(200, Math.round(numero)));
+}
+
+
+/* Número aleatorio entre mínimo y máximo */
+
+function aleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+/* Cambiar entre celular y PC */
+
+function cambiarTipo() {
+
+  const tipo = document.getElementById("tipo").value;
+
+  const celularOpciones = document.getElementById("celularOpciones");
+  const pcOpciones = document.getElementById("pcOpciones");
+
+  if (tipo === "celular") {
+
+    celularOpciones.style.display = "block";
+    pcOpciones.style.display = "none";
+
+  } else if (tipo === "pc") {
+
+    celularOpciones.style.display = "none";
+    pcOpciones.style.display = "block";
+
+  } else {
+
+    celularOpciones.style.display = "block";
+    pcOpciones.style.display = "none";
+  }
+}
+
+
+/* Cargar modelos de celular */
 
 function cargarModelos() {
 
@@ -746,44 +797,70 @@ function cargarModelos() {
 
   modelo.innerHTML = "";
 
-  if (!marca) {
+  if (!marca || !celulares[marca]) {
 
-    modelo.innerHTML =
-      '<option value="">Primero elegí una marca</option>';
+    const opcion = document.createElement("option");
+    opcion.textContent = "Primero seleccioná una marca";
+    opcion.value = "";
 
+    modelo.appendChild(opcion);
     return;
   }
 
-  const modelos = celulares[marca];
+  const modelos = Object.keys(celulares[marca]);
 
-  Object.keys(modelos).forEach(function(nombre) {
+  const primero = document.createElement("option");
+  primero.value = "";
+  primero.textContent = "Seleccionar modelo";
+  modelo.appendChild(primero);
 
-    const option = document.createElement("option");
+  modelos.forEach(function(nombre) {
 
-    option.value = nombre;
-    option.textContent = nombre;
+    const opcion = document.createElement("option");
 
-    modelo.appendChild(option);
+    opcion.value = nombre;
+    opcion.textContent = nombre;
 
+    modelo.appendChild(opcion);
   });
-
 }
 
 
-/* =====================================================
-   LIMITAR SENSIBILIDAD
-===================================================== */
+/* Cargar modelos de PC */
 
-function limitar(numero) {
+function cargarModelosPc() {
 
-  return Math.max(
-    1,
-    Math.min(
-      200,
-      Math.round(numero)
-    )
-  );
+  const marca = document.getElementById("marcaPc").value;
+  const modelo = document.getElementById("modeloPc");
 
+  modelo.innerHTML = "";
+
+  if (!marca || !computadoras[marca]) {
+
+    const opcion = document.createElement("option");
+    opcion.textContent = "Primero seleccioná una marca";
+    opcion.value = "";
+
+    modelo.appendChild(opcion);
+    return;
+  }
+
+  const modelos = Object.keys(computadoras[marca]);
+
+  const primero = document.createElement("option");
+  primero.value = "";
+  primero.textContent = "Seleccionar modelo";
+  modelo.appendChild(primero);
+
+  modelos.forEach(function(nombre) {
+
+    const opcion = document.createElement("option");
+
+    opcion.value = nombre;
+    opcion.textContent = nombre;
+
+    modelo.appendChild(opcion);
+  });
 }
 
 
@@ -793,157 +870,114 @@ function limitar(numero) {
 
 function generarSensi() {
 
-  const marca =
-    document.getElementById("marca").value;
+  const tipo = document.getElementById("tipo").value;
+  const estilo = document.getElementById("estilo").value;
 
-  const modelo =
-    document.getElementById("modelo").value;
+  if (!tipo) {
 
-  const dedos =
-    Number(document.getElementById("dedos").value);
-
-  const estilo =
-    document.getElementById("estilo").value;
-
-
-  if (!marca || !modelo) {
-
-    alert(
-      "Seleccioná la marca y el modelo de tu celular."
-    );
-
+    alert("Seleccioná si jugás en celular o PC.");
     return;
   }
 
 
-  let base = celulares[marca][modelo];
+  let base = 0;
+  let nombreDispositivo = "";
+  let configuracion = "";
 
 
-  /* AJUSTE POR DEDOS */
+  /* =========================
+     CELULAR
+  ========================= */
 
-  if (dedos === 2) {
-    base -= 5;
+  if (tipo === "celular") {
+
+    const marca = document.getElementById("marca").value;
+    const modelo = document.getElementById("modelo").value;
+    const dedos = Number(document.getElementById("dedos").value);
+
+    if (!marca || !modelo) {
+
+      alert("Seleccioná la marca y el modelo de tu celular.");
+      return;
+    }
+
+    base = celulares[marca][modelo];
+
+    nombreDispositivo = modelo;
+
+    configuracion = "📱 " + modelo;
+
+
+    /* Ajuste por dedos */
+
+    if (dedos === 2) {
+      base -= 5;
+    }
+
+    if (dedos === 3) {
+      base += 2;
+    }
+
+    if (dedos === 4) {
+      base += 5;
+    }
+
+
+    /* Ajuste por estilo */
+
+    if (estilo === "headshot") {
+      base += 8;
+    }
+
+    if (estilo === "rush") {
+      base += 12;
+    }
+
+    if (estilo === "sniper") {
+      base -= 8;
+    }
+
   }
 
-  if (dedos === 3) {
-    base += 2;
+
+  /* =========================
+     PC
+  ========================= */
+
+  if (tipo === "pc") {
+
+    const marcaPc = document.getElementById("marcaPc").value;
+    const modeloPc = document.getElementById("modeloPc").value;
+
+    if (!marcaPc || !modeloPc) {
+
+      alert("Seleccioná la marca y el modelo de tu PC.");
+      return;
+    }
+
+    base = computadoras[marcaPc][modeloPc];
+
+    nombreDispositivo = modeloPc;
+
+    configuracion = "💻 " + modeloPc;
+
+
+    /* Ajuste por estilo */
+
+    if (estilo === "headshot") {
+      base += 7;
+    }
+
+    if (estilo === "rush") {
+      base += 10;
+    }
+
+    if (estilo === "sniper") {
+      base -= 7;
+    }
+
   }
 
-  if (dedos === 4) {
-    base += 5;
-  }
 
-
-  /* AJUSTE POR ESTILO */
-
-  if (estilo === "headshot") {
-    base += 8;
-  }
-
-  if (estilo === "rush") {
-    base += 12;
-  }
-
-  if (estilo === "sniper") {
-    base -= 8;
-  }
-
-
-  /* =================================================
-     VARIACIÓN ALEATORIA
-     PARA QUE NO SALGA SIEMPRE IGUAL
-  ================================================= */
-
-  function variar(numero, variacion) {
-
-    const cambio =
-      Math.floor(
-        Math.random() *
-        (variacion * 2 + 1)
-      ) - variacion;
-
-    return limitar(numero + cambio);
-  }
-
-
-  const general =
-    variar(base + 20, 5);
-
-  const rojo =
-    variar(base + 10, 5);
-
-  const mira2 =
-    variar(base, 4);
-
-  const mira4 =
-    variar(base - 8, 4);
-
-  const awm =
-    variar(base - 30, 4);
-
-  const free =
-    variar(base + 15, 5);
-
-
-  /* MOSTRAR RESULTADOS */
-
-  document.getElementById("general")
-    .textContent = general;
-
-  document.getElementById("rojo")
-    .textContent = rojo;
-
-  document.getElementById("mira2")
-    .textContent = mira2;
-
-  document.getElementById("mira4")
-    .textContent = mira4;
-
-  document.getElementById("awm")
-    .textContent = awm;
-
-  document.getElementById("free")
-    .textContent = free;
-
-
-  document.getElementById("resultado")
-    .style.display = "block";
-
-}
-
-
-/* =====================================================
-   COPIAR SENSIBILIDAD
-===================================================== */
-
-function copiarSensi() {
-
-  const texto =
-`🔥 SENSI FF
-
-General: ${document.getElementById("general").textContent}
-Punto rojo: ${document.getElementById("rojo").textContent}
-Mira 2X: ${document.getElementById("mira2").textContent}
-Mira 4X: ${document.getElementById("mira4").textContent}
-Mira AWM: ${document.getElementById("awm").textContent}
-Free Look: ${document.getElementById("free").textContent}`;
-
-
-  navigator.clipboard.writeText(texto)
-    .then(function() {
-
-      alert("✅ Sensibilidad copiada.");
-
-    })
-    .catch(function() {
-
-      alert("No se pudo copiar automáticamente.");
-
-    });
-
-}
-
-</script>
-
-</body>
-</html>
+  /* =====================================================
+     VARIAC
